@@ -7,6 +7,7 @@
 _project=telegram
 _Pkg=td
 _pkg="${_Pkg}lib"
+_pkgbase="lib${_Pkg}"
 _pkgname="${_project}-${_pkg}"
 pkgname="${_pkgname}-git"
 pkgver=1.8.23
@@ -35,9 +36,11 @@ makedepends=(
 )
 provides=(
   "${_pkgname}=${pkgver}"
+  "${_pkgbase}=${pkgver}"
 )
 conflicts=(
-  "${_pkgname}=${pkgver}"
+  "${_pkgname}"
+  "${_pkgbase}"
 )
 _http="https://github.com"
 _ns="${_pkg}"
@@ -53,7 +56,8 @@ sha256sums=(
 
 pkgver() {
   grep \
-    -oP '(?<=TDLib VERSION )\S+' \
+    -oP \
+    '(?<=TDLib VERSION )\S+' \
     "${_Pkg}/CMakeLists.txt"
 }
 

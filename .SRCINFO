@@ -18,7 +18,9 @@ pkgbase = telegram-tdlib-git
 	depends = openssl
 	depends = zlib
 	provides = telegram-tdlib=1.8.23
-	conflicts = telegram-tdlib=1.8.23
+	provides = libtd=1.8.23
+	conflicts = telegram-tdlib
+	conflicts = libtd
 	source = git+file:///data/data/com.termux/files/home/td
 	sha256sums = SKIP
 
